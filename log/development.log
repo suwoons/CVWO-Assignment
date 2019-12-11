@@ -34,3 +34,11 @@ Entrypoint server_rendering = js/server_rendering-93bcda22c80bc8c74349.js js/ser
 Completed 200 OK in 9990ms (Views: 9982.3ms | ActiveRecord: 0.0ms | Allocations: 20227)
 
 
+Started GET "/" for ::1 at 2019-12-11 11:21:22 +0800
+  [1m[35m (14.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.5.0/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.5.0/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 75.0ms | Allocations: 463)
+Completed 200 OK in 172ms (Views: 123.4ms | ActiveRecord: 0.0ms | Allocations: 2749)
+
+
