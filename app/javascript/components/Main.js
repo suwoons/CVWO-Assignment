@@ -1,19 +1,25 @@
 import React from "react"
 import update from "immutability-helper"
 import axios from "axios"
+import "../../assets/stylesheets/todos.scss"
+// import "boostrap/dist/css/boostrap.css"
 // import PropTypes from "prop-types"
 // import TodosContainer from "./TodosContainer"
 // import AllTodos from "./AllTodos";
+import Header from "./Header"
 
 class Main extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       todos: [],
-      inputValue: ''
+      inputValue: '',
+      editValue: React.createRef(),
+      editing: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   getTodos() {
@@ -40,6 +46,7 @@ class Main extends React.Component {
     }    
   }
   
+  // handles updating checkboxes
   updateTodo = (e, id) => {
     axios.put(`/api/v1/todos/${id}`, {todo: {done: e.target.checked}})
     .then(response => {
@@ -52,6 +59,25 @@ class Main extends React.Component {
       })
     })
     .catch(error => console.log(error))      
+  }
+
+  // handles editing todo title
+  editTodo = (e, id) => {
+    console.log("editing: ", this.state.editValue.current.value);
+    if (e.key === 'Enter' && !(this.state.editValue.current === null)) {
+      axios.put(`/api/v1/todos/${id}`, {todo: {title: this.state.editValue.current.value, editable: false}})
+      .then(response => {
+        const todoIndex = this.state.todos.findIndex(x => x.id === response.data.id)
+        const todos = update(this.state.todos, {
+          [todoIndex]: {$set: response.data}
+        })
+        this.setState({
+          todos: todos,
+          editing: false,
+        })
+      })
+      .catch(error => console.log(error))
+    }      
   }
 
   deleteTodo = (id) => {
@@ -72,42 +98,78 @@ class Main extends React.Component {
     this.setState({inputValue: e.target.value});
   }
 
+  // changes editable parameter of todo
+  handleEdit = (id) => {
+    this.setState({
+      editing: !this.state.editing
+    })
+    
+    axios.put(`/api/v1/todos/${id}`, {todo: this.state.editing ? {editable: false} : {editable: true}})
+    .then(response => {
+      const todoIndex = this.state.todos.findIndex(x => x.id === response.data.id)
+      const todos = update(this.state.todos, {
+        [todoIndex]: {$set: response.data}
+      })
+      this.setState({
+        todos: todos
+      })
+    })
+    .then(console.log(this.state.todos))
+    .catch(error => console.log(error))      
+  }
+
   componentDidMount() {
-    this.getTodos()
+    this.getTodos();
+    this.setState({
+      editing: false,
+    })
   }
 
   render() {
     console.log(this.props);
-    console.log("rendered main");
+
     return (
       <React.Fragment>
-        <label>Write task below:</label>
-        <div>
-          <div className="inputContainer">
-            <input className="taskInput" type="text" 
-              placeholder="Add a task" maxLength="50" 
-              onKeyPress={this.createTodo} 
-              value={this.state.inputValue} onChange={this.handleChange}/>
-          </div>  	    
-          <div className="listWrapper">
-            <ul className="taskList">
-            {this.state.todos.map((todo) => {
-              return(
-                <li className="task" todo={todo} key={todo.id}>
-                  <input className="taskCheckbox" type="checkbox" 
-                  checked={todo.done}
-                  onChange={(e) => this.updateTodo(e, todo.id)}/>              
-                  <label className="taskLabel">{todo.title}</label>
-                  <span className="deleteTaskBtn"
-                    onClick={(e) => this.deleteTodo(todo.id)}>
-                      x
-                  </span>
-                </li>
-                )       
-              })} 	 
-            </ul>
-          </div>
-        </div>    
+          <Header heading="To-do List" />
+            <div className="inputContainer">
+              <input className="taskInput" type="text" 
+                placeholder="Add a task" maxLength="50" 
+                onKeyPress={this.createTodo} 
+                value={this.state.inputValue} onChange={this.handleChange}/>
+            </div> 
+
+            <div className="body">
+            {/* iterates through each todo item to display it*/}
+              <div className="listWrapper">
+                <ul className="taskList">
+                {this.state.todos.map((todo) => {
+                  return(
+                    <li className="task" todo={todo} key={todo.id}>
+                      <input className="taskCheckbox" type="checkbox" 
+                      checked={!!todo.done}
+                      onChange={(e) => this.updateTodo(e, todo.id)}/>    
+
+                      { todo.editable
+                      ? <input className="editForm" ref={this.state.editValue} 
+                        defaultValue={todo.title}
+                        onKeyPress={(e) => this.editTodo(e, todo.id)}
+                        ></input>
+                      : <label className="taskLabel">{todo.title}</label>
+                      }
+
+                      <span className="deleteTaskBtn"
+                        onClick={(e) => this.deleteTodo(todo.id)}>
+                          x
+                      </span>
+                      <span className="editTaskBtn" onClick={() => this.handleEdit(todo.id)}>
+                        {todo.editable ? "Save" : "✎"}
+                      </span>
+                    </li>
+                    )       
+                  })} 	 
+                </ul>
+              </div>
+            </div> 
       </React.Fragment>
     );
   }

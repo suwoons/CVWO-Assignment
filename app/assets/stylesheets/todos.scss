@@ -19,6 +19,20 @@ li.task:hover .deleteTaskBtn {
 	opacity: 1;
 }
 
+li.task:hover .editTaskBtn {
+	visibility: visible;
+	opacity: 1;
+}
+
+input.editForm {
+	font-family: Tahoma;
+	font-size: 0.8em;
+	padding: 2px 5px;
+	border-bottom: 0.5px solid #ccc;
+	border-radius: 5px;
+	width: 300px;
+}
+
 input.taskCheckbox {
 	position: relative;
 	float: left;
@@ -37,14 +51,14 @@ input.taskCheckbox {
 
 input.taskCheckbox:checked:after {
 	color: green;
-	content: "\2713";
+	content: "\2714";
 	display: block;
 	font-size: 17px;
 	height: 17px;
 	position: absolute;
 	width: 17px;
 	left: 0.5px;
-	bottom: 2px;
+	bottom: 3px;
 }
 
 input.taskCheckbox + label.taskLabel {
@@ -64,7 +78,7 @@ input[placeholder] {
 	width: 40%;
 	height: 400px;
 	position: relative;
-	margin: 0 auto;
+	margin: 30 auto;
 	border-radius: 5px;
 }
 
@@ -84,6 +98,10 @@ input[placeholder] {
 	width: 100%;
 	border-radius: 25px;
 	box-sizing: border-box;
+
+	&:focus {
+		border-color: solid rgb(97, 154, 211);    
+	}
 }
 
 .listWrapper {
@@ -108,5 +126,32 @@ input[placeholder] {
 	opacity: 0;
 	line-height: 0;
 	margin-right: 5px;
-	cursor: default;
+	cursor: pointer;
+}
+
+.editTaskBtn {
+	float: right;
+	color: rgb(60, 170, 60);
+	background: rgba(0,0,0,0);
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid white;
+	border-radius: 50%;
+	padding: 10px 5px;
+	visibility: hidden;
+	opacity: 0;
+	line-height: 0;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.body {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+*:focus {
+    outline: none;
 }

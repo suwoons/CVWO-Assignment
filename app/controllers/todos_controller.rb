@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
     todos = Todo.order("created_at DESC")
     render json: todos
@@ -11,18 +13,18 @@ class TodosController < ApplicationController
 
   def update
     todo = Todo.find(params[:id])
-    todo.update_atttributes(todo_param)
+    todo.update(todo_param)
     render json: todo
   end
 
   def destroy
     todo = Todo.find(params[:id])
     todo.destroy
-    head :no_content, status: ok
+    head :no_content
   end
 
   private
     def todo_param
-      params.require(:todo).permit(:title, :done)
+      params.require(:todo).permit(:title, :done, :editable,)
     end
 end
