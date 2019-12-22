@@ -5,9 +5,9 @@ import "../../assets/stylesheets/heading.scss"
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.username = '';
+    this.username = 'Sarah';
     this.state = {
-      inputValue: 'Sarah'
+      inputValue: ''
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -30,16 +30,16 @@ class Header extends React.Component {
   render () {
     return (
       <React.Fragment>
+        <div className="wrapper">
           {this.username === ''
-          ? <div className="wrapper">
-              <h1><input className="input" type="text" 
+          ? <h1><input className="input" type="text" 
               placeholder="What's your name?" maxLength="50" 
               onKeyPress={this.setUsername} 
               value={this.inputValue} onChange={this.handleUsernameChange} />
               <span className="underline"></span></h1>
-            </div>
           : <h1>{this.username + "\'s " + this.props.heading}</h1>
           }
+        </div>
       </React.Fragment>
     );
   }

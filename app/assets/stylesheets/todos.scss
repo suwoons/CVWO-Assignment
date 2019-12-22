@@ -105,9 +105,10 @@ input[placeholder] {
 }
 
 .listWrapper {
-	position: absolute;
+	// position: absolute;
+	position: relative;
 	bottom: 50px;
-	top: 160px;
+	top: 0px;
 	right: 0;
 	left: 0;
 	overflow: auto;

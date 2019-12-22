@@ -4,8 +4,6 @@ import axios from "axios"
 import "../../assets/stylesheets/todos.scss"
 // import "boostrap/dist/css/boostrap.css"
 // import PropTypes from "prop-types"
-// import TodosContainer from "./TodosContainer"
-// import AllTodos from "./AllTodos";
 import Header from "./Header"
 
 class Main extends React.Component {
@@ -132,6 +130,9 @@ class Main extends React.Component {
     return (
       <React.Fragment>
           <Header heading="To-do List" />
+          <ul>
+            <a href="/tags">Manage Tags</a>
+          </ul>
             <div className="inputContainer">
               <input className="taskInput" type="text" 
                 placeholder="Add a task" maxLength="50" 
@@ -157,11 +158,11 @@ class Main extends React.Component {
                         defaultValue={todo.title}
                         onKeyPress={(e) => this.editTodo(e, todo.id)}
                         ></input>
-                      : <label className="taskLabel">{todo.title} 
-                      <span className="tagList"> | tag: {todo.tags.map((tag, index) => 
+                      : <label className="taskLabel">{todo.title}
+                        <span className="tagList"> | tag: {todo.tags.map((tag, index) => 
                         index < tagLength - 1
-                        ? tag + ", "
-                        : tag)}
+                        ? tag.name + ", "
+                        : tag.name)}
                       </span>
                       </label>
                       }

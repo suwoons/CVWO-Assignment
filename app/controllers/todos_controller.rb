@@ -1,6 +1,5 @@
 class TodosController < ApplicationController
   skip_before_action :verify_authenticity_token
-  has_and_belongs_to_many :tags
   
   def index
     todos = Todo.order("created_at DESC")
@@ -26,6 +25,6 @@ class TodosController < ApplicationController
 
   private
     def todo_param
-      params.require(:todo).permit(:title, :done, :editable,)
+      params.require(:todo).permit(:title, :done, :editable, :tags)
     end
 end
