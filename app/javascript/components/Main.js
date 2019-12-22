@@ -22,6 +22,7 @@ class Main extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
+  // get the all the todos in db
   getTodos() {
     axios.get('/api/v1/todos')
     .then(response => {
@@ -138,11 +139,13 @@ class Main extends React.Component {
                 value={this.state.inputValue} onChange={this.handleChange}/>
             </div> 
 
-            <div className="body">
+            <div>
             {/* iterates through each todo item to display it*/}
               <div className="listWrapper">
                 <ul className="taskList">
                 {this.state.todos.map((todo) => {
+                  const tagLength = todo.tags.length;
+
                   return(
                     <li className="task" todo={todo} key={todo.id}>
                       <input className="taskCheckbox" type="checkbox" 
@@ -154,7 +157,13 @@ class Main extends React.Component {
                         defaultValue={todo.title}
                         onKeyPress={(e) => this.editTodo(e, todo.id)}
                         ></input>
-                      : <label className="taskLabel">{todo.title}</label>
+                      : <label className="taskLabel">{todo.title} 
+                      <span className="tagList"> | tag: {todo.tags.map((tag, index) => 
+                        index < tagLength - 1
+                        ? tag + ", "
+                        : tag)}
+                      </span>
+                      </label>
                       }
 
                       <span className="deleteTaskBtn"

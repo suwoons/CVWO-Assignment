@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/index'
   root to: 'home#index'
   
   scope '/api/v1' do

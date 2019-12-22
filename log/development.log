@@ -14997,3 +14997,638 @@ Processing by TodosController#index as HTML
 Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms | Allocations: 1809)
 
 
+Started GET "/" for ::1 at 2019-12-20 15:35:39 +0800
+  [1m[35m (21.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 32.6ms | Allocations: 439)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1026ms (Views: 968.2ms | ActiveRecord: 0.0ms | Allocations: 10631)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 15:35:42 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 128ms (Views: 57.0ms | ActiveRecord: 3.2ms | Allocations: 7790)
+
+
+Started GET "/" for ::1 at 2019-12-20 15:36:19 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: a56954bdb88e03b6cf14
+Version: webpack 4.41.2
+Time: 9934ms
+Built at: 12/20/2019 3:36:36 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-05c46d2129399539744e.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-05c46d2129399539744e.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-2fb2d3547ea8d0557ecf.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-2fb2d3547ea8d0557ecf.js.map  1.65 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-05c46d2129399539744e.js js/application-05c46d2129399539744e.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-2fb2d3547ea8d0557ecf.js js/server_rendering-2fb2d3547ea8d0557ecf.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 20597ms (Views: 20596.2ms | ActiveRecord: 0.0ms | Allocations: 5794)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 15:36:41 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 16ms (Views: 11.2ms | ActiveRecord: 0.9ms | Allocations: 1791)
+
+
+Started POST "/api/v1/todos" for ::1 at 2019-12-20 15:36:51 +0800
+Processing by TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"do something"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+  [1m[36mTodo Create (3.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "do something"], ["created_at", "2019-12-20 07:36:51.355574"], ["updated_at", "2019-12-20 07:36:51.355574"]]
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+  [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+Completed 200 OK in 40ms (Views: 1.2ms | ActiveRecord: 18.6ms | Allocations: 3308)
+
+
+Started PUT "/api/v1/todos/29" for ::1 at 2019-12-20 15:37:09 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>true}, "id"=>"29"}
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[36mTodo Update (6.8ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 1], ["updated_at", "2019-12-20 07:37:10.022939"], ["id", 29]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (31.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+Completed 200 OK in 186ms (Views: 0.9ms | ActiveRecord: 39.6ms | Allocations: 9963)
+
+
+Started PUT "/api/v1/todos/29" for ::1 at 2019-12-20 15:38:07 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>false}, "id"=>"29"}
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[36mTodo Update (5.3ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 0], ["updated_at", "2019-12-20 07:38:07.831531"], ["id", 29]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (26.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+Completed 200 OK in 99ms (Views: 1.5ms | ActiveRecord: 33.2ms | Allocations: 3768)
+
+
+Started GET "/" for ::1 at 2019-12-20 15:38:43 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 115ms (Views: 112.9ms | ActiveRecord: 0.0ms | Allocations: 4632)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 15:38:44 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (2.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 93ms (Views: 73.7ms | ActiveRecord: 2.2ms | Allocations: 1964)
+
+
+Started GET "/" for ::1 at 2019-12-20 15:53:57 +0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 4336b35e61fa0371063c
+Version: webpack 4.41.2
+Time: 9202ms
+Built at: 12/20/2019 3:54:13 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-2e72de8adf26bee1dd09.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-2e72de8adf26bee1dd09.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-d7fb2ad724fcf5f67e55.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-d7fb2ad724fcf5f67e55.js.map  1.65 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-2e72de8adf26bee1dd09.js js/application-2e72de8adf26bee1dd09.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-d7fb2ad724fcf5f67e55.js js/server_rendering-d7fb2ad724fcf5f67e55.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 20323ms (Views: 20320.3ms | ActiveRecord: 0.0ms | Allocations: 5689)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 15:54:19 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 6.2ms | ActiveRecord: 0.9ms | Allocations: 1965)
+
+
+Started GET "/" for ::1 at 2019-12-20 15:55:09 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 03455e5bb4cfb71d56d6
+Version: webpack 4.41.2
+Time: 9263ms
+Built at: 12/20/2019 3:55:25 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-d1c3ae66768ae9f38d62.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-d1c3ae66768ae9f38d62.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-92319899cd4810340049.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-92319899cd4810340049.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-d1c3ae66768ae9f38d62.js js/application-d1c3ae66768ae9f38d62.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-92319899cd4810340049.js js/server_rendering-92319899cd4810340049.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 19891ms (Views: 19887.2ms | ActiveRecord: 0.0ms | Allocations: 5539)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 15:55:30 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 15ms (Views: 8.3ms | ActiveRecord: 1.9ms | Allocations: 1967)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:31:26 +0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 965b0999df11cd4bb9e9
+Version: webpack 4.41.2
+Time: 10624ms
+Built at: 12/20/2019 7:31:43 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-c72eb0d00ffbb8851cbd.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-c72eb0d00ffbb8851cbd.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-ac6071e1bce13a333d06.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-ac6071e1bce13a333d06.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-c72eb0d00ffbb8851cbd.js js/application-c72eb0d00ffbb8851cbd.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-ac6071e1bce13a333d06.js js/server_rendering-ac6071e1bce13a333d06.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 21358ms (Views: 21357.1ms | ActiveRecord: 0.0ms | Allocations: 5668)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:31:49 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.5ms | Allocations: 1984)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:39:54 +0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 9b133b907dea3ed7c24e
+Version: webpack 4.41.2
+Time: 9703ms
+Built at: 12/20/2019 7:40:10 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-cef9f463505cb12afc80.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-cef9f463505cb12afc80.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-36c58a5eb2cb84c9625a.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-36c58a5eb2cb84c9625a.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-cef9f463505cb12afc80.js js/application-cef9f463505cb12afc80.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-36c58a5eb2cb84c9625a.js js/server_rendering-36c58a5eb2cb84c9625a.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 19943ms (Views: 19940.4ms | ActiveRecord: 0.0ms | Allocations: 5674)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:40:16 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.5ms | Allocations: 1975)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:40:40 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 8acf2d06276de95a082e
+Version: webpack 4.41.2
+Time: 9982ms
+Built at: 12/20/2019 7:40:58 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-a46b35bef40d6be077b4.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-a46b35bef40d6be077b4.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-70038bcf26c3ed222fe5.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-70038bcf26c3ed222fe5.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-a46b35bef40d6be077b4.js js/application-a46b35bef40d6be077b4.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-70038bcf26c3ed222fe5.js js/server_rendering-70038bcf26c3ed222fe5.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 22968ms (Views: 22962.7ms | ActiveRecord: 0.0ms | Allocations: 5588)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:41:04 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (2.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 28ms (Views: 23.2ms | ActiveRecord: 2.3ms | Allocations: 1975)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:41:18 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 69)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 310ms (Views: 301.0ms | ActiveRecord: 0.0ms | Allocations: 4894)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:41:20 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 1213ms (Views: 1182.5ms | ActiveRecord: 0.3ms | Allocations: 3397)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:42:31 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 3bcb50564ae17943f2b1
+Version: webpack 4.41.2
+Time: 11512ms
+Built at: 12/20/2019 7:42:51 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-b9920c893ad540b9a7d8.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-b9920c893ad540b9a7d8.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-af9519d360ae0a96343d.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-af9519d360ae0a96343d.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-b9920c893ad540b9a7d8.js js/application-b9920c893ad540b9a7d8.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-af9519d360ae0a96343d.js js/server_rendering-af9519d360ae0a96343d.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 23685ms (Views: 23682.8ms | ActiveRecord: 0.0ms | Allocations: 5668)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:42:56 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 20ms (Views: 17.7ms | ActiveRecord: 0.9ms | Allocations: 1962)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:44:10 +0800
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 438)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 170ms (Views: 146.3ms | ActiveRecord: 0.0ms | Allocations: 10569)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:44:11 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 57ms (Views: 44.8ms | ActiveRecord: 2.0ms | Allocations: 7951)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:45:21 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 7648c73deed644fbd2c4
+Version: webpack 4.41.2
+Time: 9010ms
+Built at: 12/20/2019 7:45:36 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-58482bddef47544f2635.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-58482bddef47544f2635.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-238f27ad716fdcf75ce0.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-238f27ad716fdcf75ce0.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-58482bddef47544f2635.js js/application-58482bddef47544f2635.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-238f27ad716fdcf75ce0.js js/server_rendering-238f27ad716fdcf75ce0.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.71 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 19014ms (Views: 19010.6ms | ActiveRecord: 0.0ms | Allocations: 5860)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:45:42 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 39ms (Views: 35.0ms | ActiveRecord: 0.6ms | Allocations: 2037)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:47:58 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 93111c824f066911133d
+Version: webpack 4.41.2
+Time: 8748ms
+Built at: 12/20/2019 7:48:13 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-03a08243c54ffbde8897.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-03a08243c54ffbde8897.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-9461b37eac8e22d6f330.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-9461b37eac8e22d6f330.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-03a08243c54ffbde8897.js js/application-03a08243c54ffbde8897.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-9461b37eac8e22d6f330.js js/server_rendering-9461b37eac8e22d6f330.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.87 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 17793ms (Views: 17790.9ms | ActiveRecord: 0.0ms | Allocations: 5649)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:48:18 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 29ms (Views: 24.6ms | ActiveRecord: 0.5ms | Allocations: 1975)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:50:19 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: dd9a6f0be89013679ece
+Version: webpack 4.41.2
+Time: 8989ms
+Built at: 12/20/2019 7:50:34 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-4530384878b92bf46612.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-4530384878b92bf46612.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-a8199e498ba02b3e7e42.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-a8199e498ba02b3e7e42.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-4530384878b92bf46612.js js/application-4530384878b92bf46612.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-a8199e498ba02b3e7e42.js js/server_rendering-a8199e498ba02b3e7e42.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.87 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 18884ms (Views: 18882.9ms | ActiveRecord: 0.0ms | Allocations: 5678)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:50:39 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 1.0ms | Allocations: 1971)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:51:52 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 48c67785603d48004d0a
+Version: webpack 4.41.2
+Time: 10626ms
+Built at: 12/20/2019 7:52:09 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-8a8a87626fcb94da8236.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-8a8a87626fcb94da8236.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-78b0dccd3160bc8e3e4e.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-78b0dccd3160bc8e3e4e.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-8a8a87626fcb94da8236.js js/application-8a8a87626fcb94da8236.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-78b0dccd3160bc8e3e4e.js js/server_rendering-78b0dccd3160bc8e3e4e.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.87 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 20895ms (Views: 20893.1ms | ActiveRecord: 0.0ms | Allocations: 5821)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:52:15 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.4ms | Allocations: 1986)
+
+
+Started GET "/" for ::1 at 2019-12-20 19:52:38 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 6627eae99ab1037c2a51
+Version: webpack 4.41.2
+Time: 8821ms
+Built at: 12/20/2019 7:52:52 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-7aa7d729dea313ea3d16.js  1.58 MiB       application  [emitted] [immutable]  application
+     js/application-7aa7d729dea313ea3d16.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-d03adf48b1a2ac87b9d3.js  1.46 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-d03adf48b1a2ac87b9d3.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-7aa7d729dea313ea3d16.js js/application-7aa7d729dea313ea3d16.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-d03adf48b1a2ac87b9d3.js js/server_rendering-d03adf48b1a2ac87b9d3.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 296 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 6.87 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 65 hidden modules
+
+Completed 200 OK in 16797ms (Views: 16795.6ms | ActiveRecord: 0.0ms | Allocations: 5738)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-20 19:52:56 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 0.8ms | Allocations: 2002)
+
+

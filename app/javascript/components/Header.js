@@ -7,7 +7,7 @@ class Header extends React.Component {
     super(props);
     this.username = '';
     this.state = {
-      inputValue: ''
+      inputValue: 'Sarah'
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
