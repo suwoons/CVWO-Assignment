@@ -33,6 +33,16 @@ input.editForm {
 	width: 300px;
 }
 
+input.editTagForm {
+	font-family: Tahoma;
+	font-size: 0.6em;
+	margin-top: 2px;
+	padding: 2px 5px;
+	border-bottom: 0.5px solid #ccc;
+	border-radius: 5px;
+	width: 300px;
+}
+
 input.taskCheckbox {
 	position: relative;
 	float: left;

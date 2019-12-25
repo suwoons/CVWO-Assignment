@@ -10,17 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_145725) do
+ActiveRecord::Schema.define(version: 2019_12_24_190345) do
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "todo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["todo_id"], name: "index_taggings_on_todo_id"
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "editable"
   end
 
   create_table "tags_todos", id: false, force: :cascade do |t|
     t.integer "todo_id", null: false
     t.integer "tag_id", null: false
+  end
+
+  create_table "todo_tags", force: :cascade do |t|
+    t.integer "todo_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_todo_tags_on_tag_id"
+    t.index ["todo_id"], name: "index_todo_tags_on_todo_id"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -32,4 +51,8 @@ ActiveRecord::Schema.define(version: 2019_12_22_145725) do
     t.string "tags"
   end
 
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "todos"
+  add_foreign_key "todo_tags", "tags"
+  add_foreign_key "todo_tags", "todos"
 end

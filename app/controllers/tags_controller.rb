@@ -8,6 +8,7 @@ class TagsController < ApplicationController
 
   def create
     tag = Tag.create(tag_param)
+    tag.editable = false; # set default editable to false
     render json: tag
   end
 
@@ -28,6 +29,6 @@ class TagsController < ApplicationController
 
   private
     def tag_param
-      params.require(:tag).permit(:name, :todos)
+      params.require(:tag).permit(:name, :editable, :todos)
     end
 end
