@@ -29,6 +29,6 @@ class TagsController < ApplicationController
 
   private
     def tag_param
-      params.require(:tag).permit(:name, :editable, :todos)
+      params.require(:tag).permit(:name, :editable, :todo_id)
     end
 end

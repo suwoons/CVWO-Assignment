@@ -9,7 +9,6 @@ class TodosController < ApplicationController
   def create
     todo = Todo.create(todo_param)
     todo.editable = false; # set default editable to false
-    todo.tagEditable = false;
     render json: todo
   end
 
@@ -27,6 +26,6 @@ class TodosController < ApplicationController
 
   private
     def todo_param
-      params.require(:todo).permit(:title, :done, :editable, :tags)
+      params.require(:todo).permit(:title, :done, :editable, tag_ids: [])
     end
 end

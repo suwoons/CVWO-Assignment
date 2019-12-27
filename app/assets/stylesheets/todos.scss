@@ -14,19 +14,26 @@ li.task {
 	border-bottom: 1px solid #ccc;
 }
 
-li.task:hover .deleteTaskBtn {
-	visibility: visible;
-	opacity: 1;
+li.task:hover {
+	.deleteTaskBtn, .editTaskBtn, .cancelTaskBtn {
+		visibility: visible;
+		opacity: 1;
+	}
 }
 
-li.task:hover .editTaskBtn {
-	visibility: visible;
-	opacity: 1;
-}
+// li.task:hover .editTaskBtn {
+// 	visibility: visible;
+// 	opacity: 1;
+// }
+
+// li.task:hover .cancelTaskBtn {
+// 	visibility: visible;
+// 	opacity: 1;
+// }
 
 input.editForm {
 	font-family: Tahoma;
-	font-size: 0.8em;
+	font-size: 1.0em;
 	padding: 2px 5px;
 	border-bottom: 0.5px solid #ccc;
 	border-radius: 5px;
@@ -36,7 +43,7 @@ input.editForm {
 input.editTagForm {
 	font-family: Tahoma;
 	font-size: 0.6em;
-	margin-top: 2px;
+	margin: 10px;
 	padding: 2px 5px;
 	border-bottom: 0.5px solid #ccc;
 	border-radius: 5px;
@@ -80,9 +87,9 @@ input.taskCheckbox:checked + label.taskLabel {
 	color: #656565;
 }
 
-input[placeholder] {
-	font-size: 1.1em;
-}
+// input[placeholder] {
+// 	font-size: 1.1em;
+// }
 
 .container {
 	width: 40%;
@@ -103,14 +110,16 @@ input[placeholder] {
 	padding: 15px;
 }
 
-.inputContainer .taskInput {
-	padding: 10px;
-	width: 100%;
-	border-radius: 25px;
-	box-sizing: border-box;
+.inputContainer {
+	.taskInput, .tagInput {
+		padding: 10px;
+		width: 100%;
+		border-radius: 25px;
+		box-sizing: border-box;
 
-	&:focus {
-		border-color: solid rgb(97, 154, 211);    
+		&:focus {
+			border-color: solid rgb(97, 154, 211);   
+		} 
 	}
 }
 
@@ -148,6 +157,22 @@ input[placeholder] {
 .editTaskBtn {
 	float: right;
 	color: rgb(60, 170, 60);
+	background: rgba(0,0,0,0);
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid white;
+	border-radius: 50%;
+	padding: 10px 5px;
+	visibility: hidden;
+	opacity: 0;
+	line-height: 0;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.cancelTaskBtn {
+	float: right;
+	color: red;
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;

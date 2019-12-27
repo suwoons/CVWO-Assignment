@@ -22,13 +22,12 @@ class Main extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
-  // get the all the todos in db
   getTodos() {
     axios.get('/api/v1/todos')
     .then(response => {
       this.setState({todos: response.data})
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   }
 
   getTags() {
@@ -36,7 +35,7 @@ class Main extends React.Component {
     .then(response => {
       this.setState({tags: response.data})
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   }
 
   createTodo = (e) => {
@@ -51,8 +50,21 @@ class Main extends React.Component {
           inputValue: ''
         })
       })
-      .catch(error => console.log(error))      
+      .catch(error => console.log(error));      
     }    
+  }
+
+  createTag = (tagName) => {
+    axios.post('/api/v1/tags', {tag: {name:tagName}})
+    .then(response => {
+      const tags = update(this.state.tags, {
+        $splice: [[0, 0, response.data]]
+      });
+      this.setState({
+        tags: tags,
+      });
+    })
+    .then(console.log("updated tags: ", this.state.tags))
   }
   
   // handles updating checkboxes
@@ -67,92 +79,77 @@ class Main extends React.Component {
         todos: todos
       })
     })
-    .catch(error => console.log(error))      
+    .catch(error => console.log(error));      
   }
-
-  createTag = (tagName) => {
-    axios.post('/api/v1/tags', {tag: {name:tagName}})
-    .then(response => {
-      const tags = update(this.state.tags, {
-        $splice: [[0, 0, response.data]]
-      })
-      this.setState({
-        tags: tags,
-      })
-    })
-    .catch(error => console.log(error))   
-  } 
 
   // handles editing todo title
   editTodo = (e, id, tagList) => {
-    // console.log("editing: ", this.state.editValue.current.value);
-    // console.log("tag edit: ", this.state.tagValue);
-    if (e.key === 'Enter' && !(this.state.editValue.current === null)) {
-      if (this.state.tagValue !== tagList) {
-        var tagsInput = this.state.tagValue.split(","); // get array of substrings
+    console.log('editValue: ', this.state.editValue.current.value);
+    console.log('tagValue: ', this.state.tagValue);
+
+    if (this.state.editValue.current === null || this.state.editValue.current.value === '') {
+      alert("You can't do nothing! (Can you?)");
+    } else if (e.key === 'Enter' || e.type === 'click') {
+      var tagArray = [];
+
+      // if tagValue is empty, delete all tags
+      // else, update tags accordingly
+      if (this.state.tagValue !== '') {
+        var tagsInput = this.state.tagValue.split(","); // get array of tag names
         tagsInput.forEach(tag => tag.toLowerCase());
         console.log("tagsInput: ", tagsInput);
-        console.log("all tags: ", this.state.tags);
+        console.log("all tags before: ", this.state.tags);
 
-        var tagArray = []
         // if tag does not exist, create tag and add it to array
         // else, add it to array
-        tagsInput.forEach(tag => {
-          const tagIndex = this.state.tags.findIndex(x => x.name === tag)
+        tagsInput.forEach(tagName => {
+          const tagIndex = this.state.tags.findIndex(x => x.name === tagName);
           console.log("tagIndex: ", tagIndex);
-          if (tagIndex < 0) {
-            axios.post('/api/v1/tags', {tag: {name:tag}})
-            .then(response => {
-              const tags = update(this.state.tags, {
-                $splice: [[0, 0, response.data]]
-              })
-              this.setState({
-                tags: tags,
-              })
-            })
-            .then( response => {
-              const newTag = this.state.tags[this.state.tags.length - 1] //access most recently added tag
-              tagArray[tagArray.length] = newTag;
-            })
-            .then(console.log("newTag: ", this.state.tags[this.state.tags.length - 1]))
-            .catch(error => console.log(error))   
 
-          } else {
-            tagArray[tagArray.length] = this.state.tags[tagIndex];
-            console.log("after oldTag: ", tagArray);
+          if (tagIndex < 0) { // does not exist
+            // axios.post('/api/v1/tags', {tag: {name:tagName}})
+            // .then(response => {
+            //   const tags = update(this.state.tags, {
+            //     $push: [response.data]
+            //   });
+            //   this.setState({
+            //     tags: tags,
+            //   });
+            //   tagArray[tagArray.length] = response.data.id;
+            // })
+            this.createTag(tagName);
+            tagArray[tagArray.length] = this.state.tags[0].id;
+            console.log("newTag: ", this.state.tags[0]);
+            // .then(response => {
+            //   console.log("all tags after: ", this.state.tags);
+            //   // const newTag = this.state.tags[this.state.tags.length - 1] //access most recently added tag
+            //   // tagArray[tagArray.length] =  newTag.id;
+            // })
+            // .then(console.log("newTag: ", tagArray[tagArray.length - 1]))
+            // .catch(error => console.log(error));   
+
+          } else { // tag exists
+            tagArray[tagArray.length] = this.state.tags[tagIndex].id;
           }
         })
         console.log("tagArray: ", tagArray);
-
-        axios.put(`/api/v1/todos/${id}`, {todo: {title: this.state.editValue.current.value, tags: tagArray, editable: false}})
-        .then(response => {
-          const todoIndex = this.state.todos.findIndex(x => x.id === response.data.id)
-          const todos = update(this.state.todos, {
-            [todoIndex]: {$set: response.data}
-          })
-          this.setState({
-            todos: todos,
-            tagValue: '',
-            editing: false,
-          })
-        })
-        .catch(error => console.log(error))
-
-      } else {
-        axios.put(`/api/v1/todos/${id}`, {todo: {title: this.state.editValue.current.value, editable: false}})
-        .then(response => {
-          const todoIndex = this.state.todos.findIndex(x => x.id === response.data.id)
-          const todos = update(this.state.todos, {
-            [todoIndex]: {$set: response.data}
-          })
-          this.setState({
-            todos: todos,
-            editing: false,
-          })
-        })
-        .catch(error => console.log(error))
       }
-    }      
+
+      axios.put(`/api/v1/todos/${id}`, {todo: {title: this.state.editValue.current.value, tag_ids: tagArray, editable: false}})
+      .then(response => {
+        const todoIndex = this.state.todos.findIndex(x => x.id === response.data.id)
+        const todos = update(this.state.todos, {
+          [todoIndex]: {$set: response.data}
+        })
+        this.setState({
+          todos: todos,
+          tagValue: '',
+          editing: false,
+        })
+      })
+      .catch(error => console.log(error));
+
+    }
   }
 
   deleteTodo = (id) => {
@@ -166,19 +163,18 @@ class Main extends React.Component {
         todos: todos
       })
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
   }
   
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    // console.log(e.target.name, e.target.value);
   }
 
-  // changes editable parameter of todo
+  // toggles boolean editing
   handleEdit = (id) => {
     this.setState({
       editing: !this.state.editing
-    })
+    });
     
     axios.put(`/api/v1/todos/${id}`, {todo: this.state.editing ? {editable: false} : {editable: true}})
     .then(response => {
@@ -191,7 +187,7 @@ class Main extends React.Component {
       })
     })
     .then(console.log(this.state.todos))
-    .catch(error => console.log(error))      
+    .catch(error => console.log(error));      
   }
 
   componentDidMount() {
@@ -213,7 +209,7 @@ class Main extends React.Component {
           </ul>
             <div className="inputContainer">
               <input className="taskInput" type="text" 
-                placeholder="Add a task" maxLength="50" 
+                placeholder="Add a new task" maxLength="50" 
                 name="inputValue"
                 onKeyPress={this.createTodo} 
                 value={this.state.inputValue} onChange={this.handleChange}/>
@@ -256,13 +252,19 @@ class Main extends React.Component {
                       </label>
                       }
 
-                      <span className="deleteTaskBtn"
-                        onClick={(e) => this.deleteTodo(todo.id)}>
-                          x
-                      </span>
+                      {todo.editable
+                      ? <span className="cancelTaskBtn" 
+                          onClick={() => this.handleEdit(todo.id)}>
+                            Cancel
+                        </span>
+                      : <span className="deleteTaskBtn"
+                          onClick={(e) => this.deleteTodo(todo.id)}>
+                            x
+                        </span>}
+
                       <span className="editTaskBtn">
                         {todo.editable 
-                        ? <span onClick={(e) => {this.handleEdit(todo.id); this.editTodo(e, todo.id);}}>Save</span> 
+                        ? <span onClick={(e) => this.editTodo(e, todo.id, tagList)}>Save</span> 
                         : <span onClick={() => this.handleEdit(todo.id)}>✎</span>}
                       </span>
                     </li>

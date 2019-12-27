@@ -12,17 +12,33 @@ class TagManager extends React.Component {
       inputValue: '',
     };
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleEdit = this.handleEdit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
-  // get the all the tags in db
   getTags() {
     axios.get('/api/v1/tags')
     .then(response => {
       this.setState({tags: response.data})
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
+  }
+
+  createTag = (e) => {
+    if (e.key === 'Enter' && !(e.target.value === '')) {
+      axios.post('/api/v1/tags', {tag: {name:e.target.value}})
+      .then(response => {
+        const tags = update(this.state.tags, {
+          $splice: [[0, 0, response.data]]
+        });
+        this.setState({
+          tags: tags,
+          inputValue: ''
+        });
+      })
+      .then(console.log("updated tags: ", this.state.tags))
+      .catch(error => console.log(error));
+    }
   }
 
   deleteTag = (id) => {
@@ -36,7 +52,11 @@ class TagManager extends React.Component {
         tags: tags
       })
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   componentDidMount() {
@@ -52,6 +72,14 @@ class TagManager extends React.Component {
         <ul>
           <a href="../">Back to List</a>
         </ul>
+
+        <div className="inputContainer">
+          <input className="tagInput" type="text" 
+            placeholder="Add a new tag" maxLength="50" 
+            name="inputValue"
+            onKeyPress={this.createTag} 
+            value={this.state.inputValue} onChange={this.handleChange}/>
+        </div> 
 
         <div className="listWrapper">
           <ul className="taskList">
