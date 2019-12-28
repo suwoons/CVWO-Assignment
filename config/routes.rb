@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'tagging/index'
   root to: 'home#index'
   
   scope '/api/v1' do
-    resources :todos
+    resources :todos, :taggings
     resources :tags, only: [:index, :update, :create, :destroy]
   end
 

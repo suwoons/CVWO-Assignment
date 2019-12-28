@@ -2,7 +2,6 @@ import React from "react"
 import update from "immutability-helper"
 import axios from "axios"
 import "../../assets/stylesheets/todos.scss"
-// import "boostrap/dist/css/boostrap.css"
 // import PropTypes from "prop-types"
 import Header from "./Header"
 
@@ -13,7 +12,7 @@ class Main extends React.Component {
       todos: [],
       tags: [],
       inputValue: '',
-      tagValue:'',
+      tagValue: React.createRef(),
       editValue: React.createRef(),
       editing: false,
     };
@@ -83,7 +82,7 @@ class Main extends React.Component {
   }
 
   // handles editing todo title
-  editTodo = (e, id, tagList) => {
+  editTodo = (e, id) => {
     console.log('editValue: ', this.state.editValue.current.value);
     console.log('tagValue: ', this.state.tagValue);
 
@@ -107,29 +106,19 @@ class Main extends React.Component {
           console.log("tagIndex: ", tagIndex);
 
           if (tagIndex < 0) { // does not exist
-            // axios.post('/api/v1/tags', {tag: {name:tagName}})
-            // .then(response => {
-            //   const tags = update(this.state.tags, {
-            //     $push: [response.data]
-            //   });
-            //   this.setState({
-            //     tags: tags,
-            //   });
-            //   tagArray[tagArray.length] = response.data.id;
-            // })
-            this.createTag(tagName);
-            tagArray[tagArray.length] = this.state.tags[0].id;
-            console.log("newTag: ", this.state.tags[0]);
-            // .then(response => {
-            //   console.log("all tags after: ", this.state.tags);
-            //   // const newTag = this.state.tags[this.state.tags.length - 1] //access most recently added tag
-            //   // tagArray[tagArray.length] =  newTag.id;
-            // })
-            // .then(console.log("newTag: ", tagArray[tagArray.length - 1]))
-            // .catch(error => console.log(error));   
+            // this.createTag(tagName);
+            // // prevent duplicate tags
+            // if (tagArray.findIndex(id => id === this.state.tags[0].id) < 0) {
+            //   tagArray[tagArray.length] = this.state.tags[0].id;
+            // }
+            // console.log("newTag: ", this.state.tags[0]);
+            alert(tagName + " tag not yet created!");
 
           } else { // tag exists
-            tagArray[tagArray.length] = this.state.tags[tagIndex].id;
+            // prevent duplicate tags
+            if (tagArray.findIndex(id => id === this.state.tags[tagIndex].id) < 0) {
+              tagArray[tagArray.length] = this.state.tags[tagIndex].id;
+            }
           }
         })
         console.log("tagArray: ", tagArray);
@@ -148,7 +137,6 @@ class Main extends React.Component {
         })
       })
       .catch(error => console.log(error));
-
     }
   }
 
@@ -221,10 +209,11 @@ class Main extends React.Component {
                 <ul className="taskList">
                 {this.state.todos.map((todo) => {
                   const tagLength = todo.tags.length;
-                  const tagList = todo.tags.map((tag, index) => 
+                  const tagListWithSpace = todo.tags.map((tag, index) => 
                   index < tagLength - 1
                   ? tag.name + ", "
                   : tag.name);
+                  const tagListWithoutSpace = todo.tags.map((tag) => tag.name);
 
                   return (
                     <li className="task" todo={todo} key={todo.id}>
@@ -233,22 +222,24 @@ class Main extends React.Component {
                       onChange={(e) => this.updateTodo(e, todo.id)}/>    
 
                       { todo.editable // renders edit form if editable is true
-                      ? <span><input className="editForm" ref={this.state.editValue} 
+                      ? <span><input className="editForm" 
+                        ref={this.state.editValue} 
                         defaultValue={todo.title}
-                        onKeyPress={(e) => this.editTodo(e, todo.id, tagList)}
+                        onKeyPress={(e) => this.editTodo(e, todo.id)}
                         ></input>
 
                         <input className="editTagForm"
                             placeholder="Add tags separated by a comma (eg. tag1,tag2)"
                             // find a way to have default value here too...
-                            onKeyPress={(e) => this.editTodo(e, todo.id, tagList)} 
-                            value={this.state.tagValue}
+                            onKeyPress={(e) => this.editTodo(e, todo.id)} 
+                            ref={this.state.tagValue}
+                            defaultValue={tagListWithoutSpace}
                             name="tagValue"
                             onChange={this.handleChange}/>
                         </span>
 
                       : <label className="taskLabel">{todo.title}
-                          <span className="tagList"> | tag: {tagList} </span>
+                          <span className="tagList"> | tag: {tagListWithSpace} </span>
                       </label>
                       }
 
@@ -264,7 +255,7 @@ class Main extends React.Component {
 
                       <span className="editTaskBtn">
                         {todo.editable 
-                        ? <span onClick={(e) => this.editTodo(e, todo.id, tagList)}>Save</span> 
+                        ? <span onClick={(e) => this.editTodo(e, todo.id)}>Save</span> 
                         : <span onClick={() => this.handleEdit(todo.id)}>✎</span>}
                       </span>
                     </li>
