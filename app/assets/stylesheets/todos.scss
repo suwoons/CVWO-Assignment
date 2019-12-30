@@ -19,6 +19,7 @@ li.task:hover {
 		visibility: visible;
 		opacity: 1;
 	}
+	background: #eee;
 }
 
 // li.task:hover .editTaskBtn {
@@ -42,7 +43,7 @@ input.editForm {
 
 input.editTagForm {
 	font-family: Tahoma;
-	font-size: 0.6em;
+	font-size: 0.8em;
 	margin: 10px;
 	padding: 2px 5px;
 	border-bottom: 0.5px solid #ccc;
@@ -144,7 +145,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;
@@ -160,7 +161,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;
@@ -176,7 +177,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;

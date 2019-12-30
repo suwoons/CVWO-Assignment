@@ -191,79 +191,80 @@ class Main extends React.Component {
 
     return (
       <React.Fragment>
-          <Header heading="To-do List" />
-          <ul>
-            <a href="/tags">Manage Tags</a>
-          </ul>
-            <div className="inputContainer">
-              <input className="taskInput" type="text" 
-                placeholder="Add a new task" maxLength="50" 
-                name="inputValue"
-                onKeyPress={this.createTodo} 
-                value={this.state.inputValue} onChange={this.handleChange}/>
-            </div> 
+      <Header heading="To-do List" />
+      <ul>
+        <a href="/tags">Manage Tags</a>
+      </ul>
+      
+      <div className="inputContainer">
+        <input className="taskInput" type="text" 
+          placeholder="Add a new task" maxLength="50" 
+          name="inputValue"
+          onKeyPress={this.createTodo} 
+          value={this.state.inputValue} onChange={this.handleChange}/>
+      </div> 
 
-            <div>
-            {/* iterates through each todo item to display it*/}
-              <div className="listWrapper">
-                <ul className="taskList">
-                {this.state.todos.map((todo) => {
-                  const tagLength = todo.tags.length;
-                  const tagListWithSpace = todo.tags.map((tag, index) => 
-                  index < tagLength - 1
-                  ? tag.name + ", "
-                  : tag.name);
-                  const tagListWithoutSpace = todo.tags.map((tag) => tag.name);
+        <div>
+        {/* iterates through each todo item to display it*/}
+          <div className="listWrapper">
+            <ul className="taskList">
+            {this.state.todos.map((todo) => {
+              const tagLength = todo.tags.length;
+              const tagListWithSpace = todo.tags.map((tag, index) => 
+              index < tagLength - 1
+              ? tag.name + ", "
+              : tag.name);
+              const tagListWithoutSpace = todo.tags.map((tag) => tag.name);
 
-                  return (
-                    <li className="task" todo={todo} key={todo.id}>
-                      <input className="taskCheckbox" type="checkbox" 
-                      checked={!!todo.done}
-                      onChange={(e) => this.updateTodo(e, todo.id)}/>    
+              return (
+                <li className="task" todo={todo} key={todo.id}>
+                  <input className="taskCheckbox" type="checkbox" 
+                  checked={!!todo.done}
+                  onChange={(e) => this.updateTodo(e, todo.id)}/>    
 
-                      { todo.editable // renders edit form if editable is true
-                      ? <span><input className="editForm" 
-                        ref={this.state.editValue} 
-                        defaultValue={todo.title}
-                        onKeyPress={(e) => this.editTodo(e, todo.id)}
-                        ></input>
+                  { todo.editable // renders edit form if editable is true
+                  ? <span><input className="editForm" 
+                    ref={this.state.editValue} 
+                    defaultValue={todo.title}
+                    onKeyPress={(e) => this.editTodo(e, todo.id)}
+                    ></input>
 
-                        <input className="editTagForm"
-                            placeholder="Add tags separated by a comma (eg. tag1,tag2)"
-                            // find a way to have default value here too...
-                            onKeyPress={(e) => this.editTodo(e, todo.id)} 
-                            ref={this.state.tagValue}
-                            defaultValue={tagListWithoutSpace}
-                            name="tagValue"
-                            onChange={this.handleChange}/>
-                        </span>
+                    <input className="editTagForm"
+                        placeholder="Add tags separated by a comma (eg. tag1,tag2)"
+                        // find a way to have default value here too...
+                        onKeyPress={(e) => this.editTodo(e, todo.id)} 
+                        ref={this.state.tagValue}
+                        defaultValue={tagListWithoutSpace}
+                        name="tagValue"
+                        onChange={this.handleChange}/>
+                    </span>
 
-                      : <label className="taskLabel">{todo.title}
-                          <span className="tagList"> | tag: {tagListWithSpace} </span>
-                      </label>
-                      }
+                  : <label className="taskLabel">{todo.title}
+                      <span className="tagList"> | tag: {tagListWithSpace} </span>
+                  </label>
+                  }
 
-                      {todo.editable
-                      ? <span className="cancelTaskBtn" 
-                          onClick={() => this.handleEdit(todo.id)}>
-                            Cancel
-                        </span>
-                      : <span className="deleteTaskBtn"
-                          onClick={(e) => this.deleteTodo(todo.id)}>
-                            x
-                        </span>}
+                  {todo.editable
+                  ? <span className="cancelTaskBtn" 
+                      onClick={() => this.handleEdit(todo.id)}>
+                        Cancel
+                    </span>
+                  : <span className="deleteTaskBtn"
+                      onClick={(e) => this.deleteTodo(todo.id)}>
+                        x
+                    </span>}
 
-                      <span className="editTaskBtn">
-                        {todo.editable 
-                        ? <span onClick={(e) => this.editTodo(e, todo.id)}>Save</span> 
-                        : <span onClick={() => this.handleEdit(todo.id)}>✎</span>}
-                      </span>
-                    </li>
-                    )       
-                  })} 	 
-                </ul>
-              </div>
-            </div> 
+                  <span className="editTaskBtn">
+                    {todo.editable 
+                    ? <span onClick={(e) => this.editTodo(e, todo.id)}>Save</span> 
+                    : <span onClick={() => this.handleEdit(todo.id)}>✎</span>}
+                  </span>
+                </li>
+                )       
+              })} 	 
+            </ul>
+          </div>
+        </div> 
       </React.Fragment>
     );
   }

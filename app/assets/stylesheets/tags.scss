@@ -2,12 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// ul {
-//     list-style-position: inside;
-//     padding-left: 0;
-//   }
-
-label.taskList {
+span.taskList {
 	padding: 0 25px;
 }
 
@@ -23,7 +18,8 @@ li.tag:hover {
 	.deleteTagBtn, .editTagBtn, .cancelTagBtn {
 		visibility: visible;
 		opacity: 1;
-	}
+    }
+    background: #eee;
 }
 
 input.editForm {
@@ -132,9 +128,9 @@ input.taskCheckbox:checked + label.taskLabel {
 	overflow: auto;
 }
 
-.taskListWrapper {
-    margin-top: 2px;
-}
+// .taskListWrapper {
+//     margin-top: 2px;
+// }
 
 .tagList {
     color: rgb(150, 150, 150);
@@ -148,7 +144,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;
@@ -164,7 +160,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;
@@ -180,7 +176,7 @@ input.taskCheckbox:checked + label.taskLabel {
 	background: rgba(0,0,0,0);
 	font-size: 20px;
 	font-weight: bold;
-	border: 1px solid white;
+	border: none;
 	border-radius: 50%;
 	padding: 10px 5px;
 	visibility: hidden;

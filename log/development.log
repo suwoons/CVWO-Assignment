@@ -41314,3 +41314,1270 @@ Processing by TodosController#update as HTML
 Completed 200 OK in 60ms (Views: 1.1ms | ActiveRecord: 10.9ms | Allocations: 10052)
 
 
+Started GET "/tags" for ::1 at 2019-12-30 15:35:17 +0800
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 14.8ms | Allocations: 429)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 48eca2ed9a74a804d73f
+Version: webpack 4.41.2
+Time: 10693ms
+Built at: 12/30/2019 3:35:35 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-b23104d1ea2f192d3571.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-b23104d1ea2f192d3571.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-275b91b820ff1ed40857.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-275b91b820ff1ed40857.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-b23104d1ea2f192d3571.js js/application-b23104d1ea2f192d3571.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-275b91b820ff1ed40857.js js/server_rendering-275b91b820ff1ed40857.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.39 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.21 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 23201ms (Views: 23166.9ms | ActiveRecord: 0.0ms | Allocations: 13274)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:35:41 +0800
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:35:41 +0800
+Processing by TodosController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TagsController#index as HTML
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 142ms (Views: 111.2ms | ActiveRecord: 2.6ms | Allocations: 15264)
+
+
+  [1m[36mTag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 674ms (Views: 591.0ms | ActiveRecord: 7.5ms | Allocations: 34080)
+
+
+Started GET "/" for ::1 at 2019-12-30 15:35:47 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 168)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 179ms (Views: 178.0ms | ActiveRecord: 0.0ms | Allocations: 6431)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:35:47 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:35:47 +0800
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 105ms (Views: 101.3ms | ActiveRecord: 2.5ms | Allocations: 9660)
+
+
+Completed 200 OK in 41ms (Views: 37.7ms | ActiveRecord: 0.4ms | Allocations: 4319)
+
+
+Started GET "/" for ::1 at 2019-12-30 15:37:59 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 69)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: f6148f68aa045ecccaf0
+Version: webpack 4.41.2
+Time: 9648ms
+Built at: 12/30/2019 3:38:18 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-b349887a97c39fcdf3a9.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-b349887a97c39fcdf3a9.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-151d0c5554f5cafe789c.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-151d0c5554f5cafe789c.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-b349887a97c39fcdf3a9.js js/application-b349887a97c39fcdf3a9.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-151d0c5554f5cafe789c.js js/server_rendering-151d0c5554f5cafe789c.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.38 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.3 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 21841ms (Views: 21838.7ms | ActiveRecord: 0.0ms | Allocations: 5859)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:38:23 +0800
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:38:23 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (7.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (2.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Completed 200 OK in 93ms (Views: 86.9ms | ActiveRecord: 2.1ms | Allocations: 2876)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 251ms (Views: 215.8ms | ActiveRecord: 10.6ms | Allocations: 10028)
+
+
+Started GET "/" for ::1 at 2019-12-30 15:41:40 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 1878515457d888622038
+Version: webpack 4.41.2
+Time: 7242ms
+Built at: 12/30/2019 3:41:53 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-883d2a328e18b8de7a30.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-883d2a328e18b8de7a30.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-bfc994b7a8f50a265661.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-bfc994b7a8f50a265661.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-883d2a328e18b8de7a30.js js/application-883d2a328e18b8de7a30.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-bfc994b7a8f50a265661.js js/server_rendering-bfc994b7a8f50a265661.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.38 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 14533ms (Views: 14531.4ms | ActiveRecord: 0.0ms | Allocations: 5780)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:41:56 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (5.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:41:56 +0800
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 108ms (Views: 98.3ms | ActiveRecord: 7.7ms | Allocations: 9790)
+
+
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 0.5ms | Allocations: 3928)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 15:45:29 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 69)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 49.7ms | ActiveRecord: 0.0ms | Allocations: 4384)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:29 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:29 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTodo Load (1.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Completed 200 OK in 29ms (Views: 24.4ms | ActiveRecord: 2.0ms | Allocations: 2662)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 83ms (Views: 76.8ms | ActiveRecord: 3.1ms | Allocations: 8305)
+
+
+Started GET "/" for ::1 at 2019-12-30 15:45:47 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 69)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 39.9ms | ActiveRecord: 0.0ms | Allocations: 4272)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:47 +0800
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:47 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (1.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+Completed 200 OK in 40ms (Views: 33.3ms | ActiveRecord: 1.2ms | Allocations: 2180)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:47 +0800
+Processing by TagsController#index as HTML
+Completed 200 OK in 163ms (Views: 160.1ms | ActiveRecord: 1.7ms | Allocations: 10622)
+
+
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:47 +0800
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Processing by TodosController#index as HTML
+Completed 200 OK in 96ms (Views: 94.6ms | ActiveRecord: 0.4ms | Allocations: 3521)
+
+
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 97ms (Views: 93.1ms | ActiveRecord: 2.0ms | Allocations: 7628)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 15:45:50 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 104ms (Views: 101.2ms | ActiveRecord: 0.0ms | Allocations: 4898)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:50 +0800
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:50 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Completed 200 OK in 33ms (Views: 29.6ms | ActiveRecord: 0.7ms | Allocations: 2132)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:50 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (3.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 401ms (Views: 383.2ms | ActiveRecord: 0.5ms | Allocations: 4399)
+
+
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 609ms (Views: 600.9ms | ActiveRecord: 5.0ms | Allocations: 11801)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:51 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 112ms (Views: 106.5ms | ActiveRecord: 1.9ms | Allocations: 7243)
+
+
+Started GET "/" for ::1 at 2019-12-30 15:45:53 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 102.7ms | ActiveRecord: 0.0ms | Allocations: 4882)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:53 +0800
+Processing by TagsController#index as HTML
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:53 +0800
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.7ms | Allocations: 2848)
+
+
+  [1m[36mTodo Load (1.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:53 +0800
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.4ms | Allocations: 2989)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 83ms (Views: 73.7ms | ActiveRecord: 5.3ms | Allocations: 11800)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:53 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 55ms (Views: 50.2ms | ActiveRecord: 3.2ms | Allocations: 7234)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 15:45:54 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 57.3ms | ActiveRecord: 0.0ms | Allocations: 4357)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:55 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 30ms (Views: 17.6ms | ActiveRecord: 0.9ms | Allocations: 1658)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:55 +0800
+Processing by TodosController#index as HTML
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:45:55 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTodo Load (3.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTag Load (1.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.6ms | Allocations: 2780)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 129ms (Views: 110.7ms | ActiveRecord: 6.6ms | Allocations: 10034)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:45:55 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 89ms (Views: 82.8ms | ActiveRecord: 2.9ms | Allocations: 7235)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 15:57:39 +0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 62c4d102ae35770f709a
+Version: webpack 4.41.2
+Time: 14470ms
+Built at: 12/30/2019 3:58:03 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-7ab0383a95dd51d5d4dc.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-7ab0383a95dd51d5d4dc.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-b9acfc2fe002bcb9d810.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-b9acfc2fe002bcb9d810.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-7ab0383a95dd51d5d4dc.js js/application-7ab0383a95dd51d5d4dc.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-b9acfc2fe002bcb9d810.js js/server_rendering-b9acfc2fe002bcb9d810.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.49 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 28111ms (Views: 28099.2ms | ActiveRecord: 0.0ms | Allocations: 5769)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 15:58:09 +0800
+Processing by TagsController#index as HTML
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 15:58:09 +0800
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Processing by TodosController#index as HTML
+Completed 200 OK in 112ms (Views: 93.4ms | ActiveRecord: 0.9ms | Allocations: 3327)
+
+
+  [1m[36mTodo Load (1.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (6.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 252ms (Views: 240.5ms | ActiveRecord: 9.4ms | Allocations: 8224)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 15:59:45 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: dbf2091f25947a9a4835
+Version: webpack 4.41.2
+Time: 11267ms
+Built at: 12/30/2019 4:00:03 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-a295e5545ead875bd3e6.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-a295e5545ead875bd3e6.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-169e7127350797fe89b2.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-169e7127350797fe89b2.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-a295e5545ead875bd3e6.js js/application-a295e5545ead875bd3e6.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-169e7127350797fe89b2.js js/server_rendering-169e7127350797fe89b2.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.32 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 22033ms (Views: 22029.6ms | ActiveRecord: 0.0ms | Allocations: 6115)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:00:09 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.5ms | Allocations: 1657)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:00:09 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 606ms (Views: 601.3ms | ActiveRecord: 3.2ms | Allocations: 7868)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:00:31 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: e39145dc569148f9420c
+Version: webpack 4.41.2
+Time: 38204ms
+Built at: 12/30/2019 4:01:20 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-7aab689a9434d85e3605.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-7aab689a9434d85e3605.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-8fa5a5e1847d03589d71.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-8fa5a5e1847d03589d71.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-7aab689a9434d85e3605.js js/application-7aab689a9434d85e3605.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-8fa5a5e1847d03589d71.js js/server_rendering-8fa5a5e1847d03589d71.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.32 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 52082ms (Views: 52079.9ms | ActiveRecord: 0.0ms | Allocations: 6390)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:01:25 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:01:25 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by TagsController#index as HTML
+Completed 200 OK in 84ms (Views: 79.5ms | ActiveRecord: 2.8ms | Allocations: 7252)
+
+
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 31ms (Views: 29.4ms | ActiveRecord: 0.4ms | Allocations: 2048)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:01:43 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 29fa2490c27bb32d8029
+Version: webpack 4.41.2
+Time: 10930ms
+Built at: 12/30/2019 4:02:01 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-14553044d40ffc6b2640.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-14553044d40ffc6b2640.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-d8fb70b0a6870c573781.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-d8fb70b0a6870c573781.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-14553044d40ffc6b2640.js js/application-14553044d40ffc6b2640.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-d8fb70b0a6870c573781.js js/server_rendering-d8fb70b0a6870c573781.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.32 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 21411ms (Views: 21410.2ms | ActiveRecord: 0.0ms | Allocations: 5641)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:02:05 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:02:05 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Processing by TodosController#index as HTML
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.4ms | Allocations: 2206)
+
+
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 73ms (Views: 70.1ms | ActiveRecord: 2.0ms | Allocations: 7612)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:04:38 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: f034c014b5d1cf33f485
+Version: webpack 4.41.2
+Time: 18715ms
+Built at: 12/30/2019 4:05:08 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-c6d54fec56128178224e.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-c6d54fec56128178224e.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-9931038badf05dd1dae3.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-9931038badf05dd1dae3.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-c6d54fec56128178224e.js js/application-c6d54fec56128178224e.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-9931038badf05dd1dae3.js js/server_rendering-9931038badf05dd1dae3.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.27 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 34238ms (Views: 34228.8ms | ActiveRecord: 0.0ms | Allocations: 6199)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:05:15 +0800
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (32.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 180ms (Views: 121.1ms | ActiveRecord: 32.3ms | Allocations: 1680)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:05:15 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 79ms (Views: 71.8ms | ActiveRecord: 2.5ms | Allocations: 7236)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:06:03 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 312c733b66eb07775193
+Version: webpack 4.41.2
+Time: 10385ms
+Built at: 12/30/2019 4:06:21 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-4309093301ff4e52668f.js   1.6 MiB       application  [emitted] [immutable]  application
+     js/application-4309093301ff4e52668f.js.map  1.79 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-071d8310751cabbbca84.js  1.48 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-071d8310751cabbbca84.js.map  1.66 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-4309093301ff4e52668f.js js/application-4309093301ff4e52668f.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-071d8310751cabbbca84.js js/server_rendering-071d8310751cabbbca84.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+WARNING in ./app/javascript/components/TagManager.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /home/suwoon/CVWO-Assignment/app/javascript/components/TagManager.js: Identifier directly after number (196:46)
+
+  194 |                     <span className="taskList">
+  195 |                       {todoList.map((todo) => 
+> 196 |                         <ul style={{padding: 0px}} key={todo.id}>
+      |                                               ^
+  197 |                           <input className="taskCheckbox" type="checkbox" 
+  198 |                           checked={!!todo.done}
+  199 |                           onChange={(e) => this.updateTodo(e, todo.id)}/> 
+    at Object.raise (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:6983:17)
+    at Object.readNumber (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:7918:18)
+    at Object.getTokenFromCode (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:7625:14)
+    at Object.getTokenFromCode (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:4129:18)
+    at Object.nextToken (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:7203:12)
+    at Object.next (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:7132:10)
+    at Object.eat (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:7137:12)
+    at Object.parseObjectProperty (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:10088:14)
+    at Object.parseObjPropValue (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:10114:101)
+    at Object.parseObjectMember (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:10038:10)
+    at Object.parseObj (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9958:25)
+    at Object.parseExprAtom (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9580:28)
+    at Object.parseExprAtom (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:4097:20)
+    at Object.parseExprSubscripts (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9213:23)
+    at Object.parseMaybeUnary (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9193:21)
+    at Object.parseExprOps (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9059:23)
+    at Object.parseMaybeConditional (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9032:23)
+    at Object.parseMaybeAssign (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:8978:21)
+    at Object.parseExpression (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:8928:23)
+    at Object.jsxParseExpressionContainer (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:3948:30)
+    at Object.jsxParseAttributeValue (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:3915:21)
+    at Object.jsxParseAttribute (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:3966:44)
+    at Object.jsxParseOpeningElementAfterName (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:3986:28)
+    at Object.jsxParseOpeningElementAt (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:3979:17)
+    at Object.jsxParseElementAt (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:4011:33)
+    at Object.jsxParseElement (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:4085:17)
+    at Object.parseExprAtom (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:4092:19)
+    at Object.parseExprSubscripts (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9213:23)
+    at Object.parseMaybeUnary (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9193:21)
+    at Object.parseExprOps (/home/suwoon/CVWO-Assignment/node_modules/@babel/parser/lib/index.js:9059:23)
+ @ ./app/javascript/components sync ^\.\/.*$ ./TagManager.js
+ @ ./app/javascript/packs/application.js
+
+Completed 200 OK in 21108ms (Views: 21102.8ms | ActiveRecord: 0.0ms | Allocations: 5682)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:06:47 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 68)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/suwoon/CVWO-Assignment/public/packs
+[Webpacker] Hash: 46cb65f71cf28a6e15ca
+Version: webpack 4.41.2
+Time: 13791ms
+Built at: 12/30/2019 4:07:11 PM
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-387ab3fe46192350a5e8.js  1.62 MiB       application  [emitted] [immutable]  application
+     js/application-387ab3fe46192350a5e8.js.map  1.81 MiB       application  [emitted] [dev]        application
+         js/hello_react-ba2979420ed996cdb76f.js  1.19 MiB       hello_react  [emitted] [immutable]  hello_react
+     js/hello_react-ba2979420ed996cdb76f.js.map  1.37 MiB       hello_react  [emitted] [dev]        hello_react
+    js/server_rendering-cf64b8dc2deb41613fea.js   1.5 MiB  server_rendering  [emitted] [immutable]  server_rendering
+js/server_rendering-cf64b8dc2deb41613fea.js.map  1.68 MiB  server_rendering  [emitted] [dev]        server_rendering
+                                  manifest.json  1.05 KiB                    [emitted]              
+Entrypoint application = js/application-387ab3fe46192350a5e8.js js/application-387ab3fe46192350a5e8.js.map
+Entrypoint hello_react = js/hello_react-ba2979420ed996cdb76f.js js/hello_react-ba2979420ed996cdb76f.js.map
+Entrypoint server_rendering = js/server_rendering-cf64b8dc2deb41613fea.js js/server_rendering-cf64b8dc2deb41613fea.js.map
+[./app/assets/stylesheets/heading.scss] 544 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/tags.scss] 541 bytes {application} {server_rendering} [built]
+[./app/assets/stylesheets/todos.scss] 542 bytes {application} {server_rendering} [built]
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/components sync recursive ^\.\/.*$] ./app/javascript/components sync ^\.\/.*$ 368 bytes {application} {server_rendering} [built]
+[./app/javascript/packs/application.js] 968 bytes {application} [built]
+[./app/javascript/packs/hello_react.jsx] 990 bytes {hello_react} [built]
+[./app/javascript/packs/server_rendering.js] 301 bytes {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/heading.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/heading.scss 2.74 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/tags.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/tags.scss 8.27 KiB {application} {server_rendering} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/assets/stylesheets/todos.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/assets/stylesheets/todos.scss 8.23 KiB {application} {server_rendering} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 67 hidden modules
+
+Completed 200 OK in 28333ms (Views: 28330.6ms | ActiveRecord: 0.0ms | Allocations: 5813)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:07:17 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:07:17 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  [1m[36mTag Load (2.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 691ms (Views: 679.5ms | ActiveRecord: 2.8ms | Allocations: 10801)
+
+
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 633ms (Views: 575.2ms | ActiveRecord: 2.7ms | Allocations: 8712)
+
+
+Started PUT "/api/v1/todos/2" for ::1 at 2019-12-30 16:07:24 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>true}, "id"=>"2"}
+  [1m[36mTodo Load (1.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (1.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (5.4ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 1], ["updated_at", "2019-12-30 08:07:24.615508"], ["id", 2]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (97.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 540ms (Views: 247.5ms | ActiveRecord: 107.5ms | Allocations: 6603)
+
+
+Started PUT "/api/v1/todos/2" for ::1 at 2019-12-30 16:07:25 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>false}, "id"=>"2"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (2.6ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 0], ["updated_at", "2019-12-30 08:07:25.315563"], ["id", 2]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (17.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 77ms (Views: 20.3ms | ActiveRecord: 20.8ms | Allocations: 5986)
+
+
+Started PUT "/api/v1/todos/2" for ::1 at 2019-12-30 16:07:25 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>true}, "id"=>"2"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.9ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 1], ["updated_at", "2019-12-30 08:07:25.964137"], ["id", 2]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 85ms (Views: 28.3ms | ActiveRecord: 12.0ms | Allocations: 6000)
+
+
+Started PUT "/api/v1/todos/2" for ::1 at 2019-12-30 16:07:26 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>false}, "id"=>"2"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.8ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 0], ["updated_at", "2019-12-30 08:07:26.472219"], ["id", 2]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 46ms (Views: 10.8ms | ActiveRecord: 13.9ms | Allocations: 6002)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2019-12-30 16:07:27 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>true}, "id"=>"1"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.7ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 1], ["updated_at", "2019-12-30 08:07:27.487477"], ["id", 1]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 52ms (Views: 5.9ms | ActiveRecord: 15.0ms | Allocations: 6024)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2019-12-30 16:07:28 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>false}, "id"=>"1"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.7ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 0], ["updated_at", "2019-12-30 08:07:28.333646"], ["id", 1]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 55ms (Views: 23.1ms | ActiveRecord: 15.3ms | Allocations: 5841)
+
+
+Started PUT "/api/v1/todos/3" for ::1 at 2019-12-30 16:07:30 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>true}, "id"=>"3"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (2.7ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 1], ["updated_at", "2019-12-30 08:07:30.077881"], ["id", 3]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (27.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 80ms (Views: 14.0ms | ActiveRecord: 31.1ms | Allocations: 5995)
+
+
+Started PUT "/api/v1/todos/3" for ::1 at 2019-12-30 16:07:31 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"done"=>false}, "id"=>"3"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (4.8ms)[0m  [1m[33mUPDATE "todos" SET "done" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["done", 0], ["updated_at", "2019-12-30 08:07:31.834272"], ["id", 3]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (17.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 65ms (Views: 6.8ms | ActiveRecord: 22.8ms | Allocations: 5099)
+
+
+Started POST "/api/v1/tags" for ::1 at 2019-12-30 16:07:37 +0800
+Processing by TagsController#create as HTML
+  Parameters: {"tag"=>{"name"=>"new"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[36mTag Create (3.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "new"], ["created_at", "2019-12-30 08:07:37.660787"], ["updated_at", "2019-12-30 08:07:37.660787"]]
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[35m (63.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+Completed 200 OK in 98ms (Views: 0.6ms | ActiveRecord: 66.2ms | Allocations: 3763)
+
+
+Started GET "/" for ::1 at 2019-12-30 16:07:39 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 169ms (Views: 166.6ms | ActiveRecord: 0.0ms | Allocations: 4403)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:07:39 +0800
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:07:39 +0800
+Processing by TodosController#index as HTML
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 1801)
+
+
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 260ms (Views: 251.5ms | ActiveRecord: 2.1ms | Allocations: 9466)
+
+
+Started PUT "/api/v1/todos/3" for ::1 at 2019-12-30 16:07:42 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>true}, "id"=>"3"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (2.3ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 1], ["updated_at", "2019-12-30 08:07:43.404351"], ["id", 3]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 375ms (Views: 12.4ms | ActiveRecord: 13.7ms | Allocations: 6002)
+
+
+Started PUT "/api/v1/todos/3" for ::1 at 2019-12-30 16:07:51 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"Finish worksheet", "tag_ids"=>[3, 1, 14], "editable"=>false}, "id"=>"3"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (1.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (?, ?, ?)[0m  [["id", 3], ["id", 1], ["id", 14]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTagging Create (2.6ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "todo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 14], ["todo_id", 3], ["created_at", "2019-12-30 08:07:51.332796"], ["updated_at", "2019-12-30 08:07:51.332796"]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (0.4ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 0], ["updated_at", "2019-12-30 08:07:51.344320"], ["id", 3]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (15.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+Completed 200 OK in 289ms (Views: 1.5ms | ActiveRecord: 23.4ms | Allocations: 17777)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:07:55 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 78.2ms | ActiveRecord: 0.0ms | Allocations: 4426)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:07:55 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:07:55 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (2.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 2.1ms | Allocations: 1801)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 404ms (Views: 398.1ms | ActiveRecord: 4.4ms | Allocations: 10358)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:07:56 +0800
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:07:56 +0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TagsController#index as HTML
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 67ms (Views: 62.6ms | ActiveRecord: 2.4ms | Allocations: 8755)
+
+
+Completed 200 OK in 78ms (Views: 74.0ms | ActiveRecord: 0.5ms | Allocations: 7564)
+
+
+Started GET "/" for ::1 at 2019-12-30 16:08:17 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 60.8ms | ActiveRecord: 0.0ms | Allocations: 4329)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:08:18 +0800
+Processing by TodosController#index as HTML
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:08:18 +0800
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 45ms (Views: 16.4ms | ActiveRecord: 0.8ms | Allocations: 2521)
+
+
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 138ms (Views: 134.4ms | ActiveRecord: 2.0ms | Allocations: 11069)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:08:18 +0800
+Processing by TagsController#index as HTML
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:08:18 +0800
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 30ms (Views: 21.9ms | ActiveRecord: 0.5ms | Allocations: 3587)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 99ms (Views: 89.4ms | ActiveRecord: 2.5ms | Allocations: 8519)
+
+
+Started GET "/tags" for ::1 at 2019-12-30 16:08:20 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 75ms (Views: 73.7ms | ActiveRecord: 0.0ms | Allocations: 4429)
+
+
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:08:20 +0800
+Processing by TagsController#index as HTML
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:08:20 +0800
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 44ms (Views: 41.0ms | ActiveRecord: 0.3ms | Allocations: 2513)
+
+
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/tags" for ::1 at 2019-12-30 16:08:20 +0800
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (2.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (5.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 200ms (Views: 185.7ms | ActiveRecord: 8.5ms | Allocations: 8842)
+
+
+Started GET "/api/v1/todos" for ::1 at 2019-12-30 16:08:20 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Completed 200 OK in 32ms (Views: 23.4ms | ActiveRecord: 0.5ms | Allocations: 1800)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 8]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 136ms (Views: 131.0ms | ActiveRecord: 2.3ms | Allocations: 7764)
+
+

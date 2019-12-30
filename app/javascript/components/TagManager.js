@@ -191,18 +191,18 @@ class TagManager extends React.Component {
                   </span>
 
                   <span className="taskListWrapper">
-                    <label className="taskList">
+                    <span className="taskList">
                       {todoList.map((todo) => 
-                        <div key={todo.id}>
+                        <ul style={{padding: 0}} key={todo.id}>
                           <input className="taskCheckbox" type="checkbox" 
                           checked={!!todo.done}
                           onChange={(e) => this.updateTodo(e, todo.id)}/> 
                           <label className="taskLabel">{todo.title}</label>
-                        </div>
+                        </ul>
                       )}
-                    </label>
+                    </span>
                   </span>
-                  
+
                 </li>
               )
             })}
