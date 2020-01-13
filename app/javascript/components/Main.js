@@ -195,7 +195,7 @@ class Main extends React.Component {
       <ul>
         <a href="/tags">Manage Tags</a>
       </ul>
-      
+
       <div className="inputContainer">
         <input className="taskInput" type="text" 
           placeholder="Add a new task" maxLength="50" 
@@ -244,6 +244,7 @@ class Main extends React.Component {
                   </label>
                   }
 
+                  {/* edit, delete, save, cancel buttons */}
                   {todo.editable
                   ? <span className="cancelTaskBtn" 
                       onClick={() => this.handleEdit(todo.id)}>

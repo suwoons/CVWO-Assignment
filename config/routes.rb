@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   
   scope '/api/v1' do
-    resources :todos, :taggings
+    resources :todos, :taggings, :users
     resources :tags, only: [:index, :update, :create, :destroy]
   end
 
