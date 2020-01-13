@@ -3,4 +3,5 @@
 log/*.log
 node_modules/
 lib/
+bin/
 yarn.lock
