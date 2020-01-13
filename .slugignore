@@ -1,0 +1,6 @@
+*.pdf
+*.md
+log/*.log
+node_modules/
+lib/
+yarn.lock
