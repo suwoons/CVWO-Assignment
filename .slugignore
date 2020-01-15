@@ -4,5 +4,6 @@ log/*.log
 node_modules/
 lib/
 test/
+tmp/
 yarn.lock
 Gemfile.lock
