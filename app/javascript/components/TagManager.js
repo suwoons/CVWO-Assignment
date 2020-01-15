@@ -158,10 +158,7 @@ class TagManager extends React.Component {
               var todoList = [];
               this.state.todos.map((todo) =>
                 todo.tags.map((todoTag) => 
-                  { if (todoTag.id === tag.id) {
-                      return todoList[todoList.length] = todo;
-                    }
-                  }
+                  { if (todoTag.id === tag.id) return todoList[todoList.length] = todo; }
               ));
 
               return (
@@ -191,16 +188,16 @@ class TagManager extends React.Component {
                   </span>
 
                   <span className="taskListWrapper">
-                    <span className="taskList">
-                      {todoList.map((todo) => 
-                        <ul style={{padding: 0}} key={todo.id}>
-                          <input className="taskCheckbox" type="checkbox" 
-                          checked={!!todo.done}
-                          onChange={(e) => this.updateTodo(e, todo.id)}/> 
-                          <label className="taskLabel">{todo.title}</label>
-                        </ul>
-                      )}
-                    </span>
+                    {todoList.map((todo) => 
+                        <span className="taskList">
+                          <ul className="task" key={todo.id}>
+                            <input className="taskCheckbox" type="checkbox" 
+                            checked={!!todo.done}
+                            onChange={(e) => this.updateTodo(e, todo.id)}/> 
+                            <label className="taskLabel">{todo.title}</label>
+                          </ul>
+                        </span>
+                    )}
                   </span>
 
                 </li>

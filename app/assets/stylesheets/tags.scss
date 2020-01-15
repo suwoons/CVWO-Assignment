@@ -3,14 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 span.taskList {
-	padding: 0 25px;
+	padding: 0px 15px;
 }
 
 li.tag {
 	list-style-type: none;
 	font-family: Tahoma;
 	font-size: 1.0em;
-	padding: 5px 0;
+	padding: 0px 0px;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -20,6 +20,10 @@ li.tag:hover {
 		opacity: 1;
     }
     background: #eee;
+}
+
+ul.task {
+	padding: 0px;
 }
 
 input.editForm {
@@ -70,7 +74,7 @@ input.taskCheckbox:checked:after {
 }
 
 label.tagLabel {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 input.taskCheckbox + label.taskLabel {
@@ -127,10 +131,6 @@ input.taskCheckbox:checked + label.taskLabel {
 	left: 0;
 	overflow: auto;
 }
-
-// .taskListWrapper {
-//     margin-top: 2px;
-// }
 
 .tagList {
     color: rgb(150, 150, 150);
