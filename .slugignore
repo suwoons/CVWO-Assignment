@@ -3,4 +3,6 @@
 log/*.log
 node_modules/
 lib/
+test/
 yarn.lock
+Gemfile.lock
