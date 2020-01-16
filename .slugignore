@@ -7,4 +7,3 @@ test/
 tmp/
 public/packs/js/
 yarn.lock
-Gemfile.lock
