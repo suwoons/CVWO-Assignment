@@ -20,6 +20,15 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  database: dejotcgklm6abq
+  username: sovlwasuxmyxjb
+  password: 5d0f6a29612a0e0560470dfbeefd189f790559e7104eac803fa9914f8f1fd71d
+  host: ec2-174-129-33-14.compute-1.amazonaws.com
+  sslmode: require

@@ -55,6 +55,7 @@ group :test do
 end
 
 group :production do
+# Use PostgreSQL for Heroku deployment
   gem 'pg'
 end
 

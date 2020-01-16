@@ -1,1 +1,6 @@
+*.pdf
+*.md
+log/*.log
+tmp/
 public/packs/js/
+yarn.lock
