@@ -49110,3 +49110,731 @@ Processing by TodosController#index as HTML
 Completed 200 OK in 91ms (Views: 88.8ms | ActiveRecord: 1.2ms | Allocations: 5539)
 
 
+Started GET "/" for ::1 at 2020-02-06 01:11:07 +0800
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 438)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 70.6ms | ActiveRecord: 0.0ms | Allocations: 11548)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:07 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:07 +0800
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:07 +0800
+Processing by UsersController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TagsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 38ms (Views: 22.8ms | ActiveRecord: 3.4ms | Allocations: 8614)
+
+
+Processing by TodosController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 114ms (Views: 63.7ms | ActiveRecord: 1.8ms | Allocations: 20125)
+
+
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 153ms (Views: 127.3ms | ActiveRecord: 4.7ms | Allocations: 29047)
+
+
+Started POST "/api/v1/todos" for ::1 at 2020-02-06 01:11:11 +0800
+Processing by TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"random task"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+  [1m[36mTodo Create (6.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "random task"], ["created_at", "2020-02-05 17:11:11.646881"], ["updated_at", "2020-02-05 17:11:11.646881"]]
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:10:in `create'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:12:in `create'
+Completed 200 OK in 39ms (Views: 10.1ms | ActiveRecord: 15.9ms | Allocations: 5436)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:14 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>true}, "id"=>"4"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.1ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 1], ["updated_at", "2020-02-05 17:11:14.934339"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 37ms (Views: 2.1ms | ActiveRecord: 13.0ms | Allocations: 5930)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:20 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"random task", "tag_ids"=>[], "editable"=>false}, "id"=>"4"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE 1=0[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (3.6ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 0], ["updated_at", "2020-02-05 17:11:20.851132"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+Completed 200 OK in 46ms (Views: 0.6ms | ActiveRecord: 17.7ms | Allocations: 6467)
+
+
+Started GET "/tags" for ::1 at 2020-02-06 01:11:22 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 164)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.0ms | Allocations: 4948)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:22 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:22 +0800
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:22 +0800
+Processing by TagsController#index as HTML
+Processing by UsersController#index as HTML
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.2ms | Allocations: 3285)
+
+
+Completed 200 OK in 30ms (Views: 28.3ms | ActiveRecord: 0.3ms | Allocations: 3534)
+
+
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 106ms (Views: 102.9ms | ActiveRecord: 2.2ms | Allocations: 8272)
+
+
+Started POST "/api/v1/tags" for ::1 at 2020-02-06 01:11:24 +0800
+Processing by TagsController#create as HTML
+  Parameters: {"tag"=>{"name"=>"random tag"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[36mTag Create (1.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "random tag"], ["created_at", "2020-02-05 17:11:24.313376"], ["updated_at", "2020-02-05 17:11:24.313376"]]
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[35m (12.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+Completed 200 OK in 22ms (Views: 0.4ms | ActiveRecord: 13.3ms | Allocations: 4140)
+
+
+Started GET "/" for ::1 at 2020-02-06 01:11:28 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.0ms | Allocations: 4271)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:28 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:28 +0800
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:28 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+Processing by TodosController#index as HTML
+Processing by TagsController#index as HTML
+  [1m[36mTodo Load (1.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 24ms (Views: 19.4ms | ActiveRecord: 0.6ms | Allocations: 3838)
+
+
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.3ms | Allocations: 3331)
+
+
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:28 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:28 +0800
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 1.5ms | Allocations: 4139)
+
+
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.2ms | Allocations: 3168)
+
+
+Completed 200 OK in 85ms (Views: 80.8ms | ActiveRecord: 3.1ms | Allocations: 15361)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:28 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (1.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 3.3ms | Allocations: 6800)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:30 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>true}, "id"=>"4"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.4ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 1], ["updated_at", "2020-02-05 17:11:30.049899"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 50ms (Views: 3.6ms | ActiveRecord: 15.4ms | Allocations: 5698)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:33 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"random task", "tag_ids"=>[4], "editable"=>false}, "id"=>"4"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTagging Create (1.5ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "todo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 4], ["todo_id", 4], ["created_at", "2020-02-05 17:11:33.851000"], ["updated_at", "2020-02-05 17:11:33.851000"]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 0], ["updated_at", "2020-02-05 17:11:33.858085"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+Completed 200 OK in 77ms (Views: 1.5ms | ActiveRecord: 11.9ms | Allocations: 17969)
+
+
+Started GET "/tags" for ::1 at 2020-02-06 01:11:35 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.0ms | Allocations: 4397)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:35 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:35 +0800
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:35 +0800
+Processing by UsersController#index as HTML
+Processing by TagsController#index as HTML
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.6ms | Allocations: 3294)
+
+
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.4ms | Allocations: 3485)
+
+
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:35 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:35 +0800
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Processing by UsersController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.4ms | Allocations: 3399)
+
+
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.2ms | Allocations: 3543)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 107ms (Views: 103.9ms | ActiveRecord: 1.9ms | Allocations: 16421)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:35 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 54ms (Views: 51.4ms | ActiveRecord: 1.3ms | Allocations: 6934)
+
+
+Started DELETE "/api/v1/tags/4" for ::1 at 2020-02-06 01:11:38 +0800
+Processing by TagsController#destroy as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:22:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:23:in `destroy'
+  [1m[36mTagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."tag_id" = ?[0m  [["tag_id", 4]]
+  ↳ app/controllers/tags_controller.rb:23:in `destroy'
+  [1m[36mTagging Destroy (1.3ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/tags_controller.rb:23:in `destroy'
+  [1m[36mTag Destroy (0.3ms)[0m  [1m[31mDELETE FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/tags_controller.rb:23:in `destroy'
+  [1m[35m (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:23:in `destroy'
+Completed 204 No Content in 32ms (ActiveRecord: 15.9ms | Allocations: 6097)
+
+
+Started GET "/" for ::1 at 2020-02-06 01:11:40 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 49.2ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:40 +0800
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:40 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:40 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.3ms | Allocations: 2411)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:40 +0800
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.3ms | Allocations: 3911)
+
+
+Completed 200 OK in 58ms (Views: 55.6ms | ActiveRecord: 1.2ms | Allocations: 12019)
+
+
+Processing by TagsController#index as HTML
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:40 +0800
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:40 +0800
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+Processing by TodosController#index as HTML
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.4ms | Allocations: 3779)
+
+
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 1.3ms | Allocations: 2606)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 45ms (Views: 38.4ms | ActiveRecord: 1.7ms | Allocations: 8369)
+
+
+Started GET "/tags" for ::1 at 2020-02-06 01:11:44 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 69)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 42.2ms | ActiveRecord: 0.0ms | Allocations: 4387)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:44 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:44 +0800
+Processing by UsersController#index as HTML
+Processing by TagsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.3ms | Allocations: 3004)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:44 +0800
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 3050)
+
+
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:44 +0800
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:44 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+Processing by TagsController#index as HTML
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.4ms | Allocations: 3424)
+
+
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.3ms | Allocations: 3476)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 71ms (Views: 69.3ms | ActiveRecord: 1.3ms | Allocations: 11481)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:44 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 71ms (Views: 68.8ms | ActiveRecord: 1.6ms | Allocations: 6797)
+
+
+Started POST "/api/v1/tags" for ::1 at 2020-02-06 01:11:46 +0800
+Processing by TagsController#create as HTML
+  Parameters: {"tag"=>{"name"=>"random tag"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[36mTag Create (1.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "random tag"], ["created_at", "2020-02-05 17:11:46.206402"], ["updated_at", "2020-02-05 17:11:46.206402"]]
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+  [1m[35m (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:10:in `create'
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 13.2ms | Allocations: 3672)
+
+
+Started GET "/" for ::1 at 2020-02-06 01:11:47 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 69)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.0ms | Allocations: 4307)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:47 +0800
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:47 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:47 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+Processing by TagsController#index as HTML
+Processing by UsersController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.4ms | Allocations: 3857)
+
+
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.3ms | Allocations: 4488)
+
+
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:47 +0800
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:47 +0800
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.2ms | Allocations: 3535)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+Completed 200 OK in 84ms (Views: 81.5ms | ActiveRecord: 1.7ms | Allocations: 16362)
+
+
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.3ms | Allocations: 2676)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:47 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 1.3ms | Allocations: 6795)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:48 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"editable"=>true}, "id"=>"4"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (1.2ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 1], ["updated_at", "2020-02-05 17:11:48.658566"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:18:in `update'
+Completed 200 OK in 48ms (Views: 2.0ms | ActiveRecord: 14.6ms | Allocations: 5712)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2020-02-06 01:11:51 +0800
+Processing by TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"random task", "tag_ids"=>[5], "editable"=>false}, "id"=>"4"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:16:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTagging Create (2.0ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "todo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 5], ["todo_id", 4], ["created_at", "2020-02-05 17:11:51.556208"], ["updated_at", "2020-02-05 17:11:51.556208"]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[36mTodo Update (0.3ms)[0m  [1m[33mUPDATE "todos" SET "editable" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["editable", 0], ["updated_at", "2020-02-05 17:11:51.564891"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:17:in `update'
+Completed 200 OK in 35ms (Views: 1.4ms | ActiveRecord: 14.6ms | Allocations: 8221)
+
+
+Started GET "/tags" for ::1 at 2020-02-06 01:11:53 +0800
+Processing by TagsController#show as HTML
+  Rendering tags/show.html.erb within layouts/application
+  Rendered tags/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 53.5ms | ActiveRecord: 0.0ms | Allocations: 4469)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:53 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:53 +0800
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:53 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Processing by TagsController#index as HTML
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 2107)
+
+
+Processing by TodosController#index as HTML
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTodo Load (1.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:53 +0800
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.6ms | Allocations: 3817)
+
+
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+Processing by UsersController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:53 +0800
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.2ms | Allocations: 2471)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+Processing by TagsController#index as HTML
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Completed 200 OK in 96ms (Views: 90.9ms | ActiveRecord: 2.9ms | Allocations: 13606)
+
+
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.2ms | Allocations: 2767)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:53 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 49ms (Views: 46.5ms | ActiveRecord: 1.2ms | Allocations: 6929)
+
+
+Started PUT "/api/v1/tags/5" for ::1 at 2020-02-06 01:11:54 +0800
+Processing by TagsController#update as HTML
+  Parameters: {"tag"=>{"editable"=>true}, "id"=>"5"}
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+  [1m[36mTag Update (1.3ms)[0m  [1m[33mUPDATE "tags" SET "editable" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["editable", 1], ["updated_at", "2020-02-05 17:11:54.637550"], ["id", 5]]
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+Completed 200 OK in 27ms (Views: 0.4ms | ActiveRecord: 14.4ms | Allocations: 4272)
+
+
+Started PUT "/api/v1/tags/5" for ::1 at 2020-02-06 01:11:58 +0800
+Processing by TagsController#update as HTML
+  Parameters: {"tag"=>{"name"=>"random other tag", "editable"=>false}, "id"=>"5"}
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:16:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+  [1m[36mTag Update (1.4ms)[0m  [1m[33mUPDATE "tags" SET "name" = ?, "editable" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["name", "random other tag"], ["editable", 0], ["updated_at", "2020-02-05 17:11:58.329180"], ["id", 5]]
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tags_controller.rb:17:in `update'
+Completed 200 OK in 25ms (Views: 0.8ms | ActiveRecord: 13.8ms | Allocations: 4631)
+
+
+Started GET "/" for ::1 at 2020-02-06 01:11:59 +0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 68)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 47.9ms | ActiveRecord: 0.0ms | Allocations: 4301)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:59 +0800
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:59 +0800
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:59 +0800
+Processing by UsersController#index as HTML
+Processing by TagsController#index as HTML
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.2ms | Allocations: 3273)
+
+
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.2ms | Allocations: 3982)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Started GET "/api/v1/users" for ::1 at 2020-02-06 01:11:59 +0800
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+Started GET "/api/v1/tags" for ::1 at 2020-02-06 01:11:59 +0800
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by UsersController#index as HTML
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Processing by TagsController#index as HTML
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" ORDER BY created_at DESC[0m
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 3533)
+
+
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  ↳ app/controllers/tags_controller.rb:6:in `index'
+Completed 200 OK in 68ms (Views: 65.9ms | ActiveRecord: 1.1ms | Allocations: 15348)
+
+
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 3719)
+
+
+Started GET "/api/v1/todos" for ::1 at 2020-02-06 01:11:59 +0800
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY created_at DESC[0m
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 4]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 3]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:6:in `index'
+Completed 200 OK in 44ms (Views: 40.5ms | ActiveRecord: 2.0ms | Allocations: 6927)
+
+
