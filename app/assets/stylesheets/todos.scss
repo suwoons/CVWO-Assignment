@@ -198,3 +198,24 @@ input.taskCheckbox:checked + label.taskLabel {
 *:focus {
     outline: none;
 }
+
+a[type="button"] {
+	text-decoration: none;
+	text-align: center;
+	color: rgb(77, 77, 77);
+	display: inline-block;
+	box-shadow: 5px 5px 4px rgba(112, 112, 112, 0.4); 
+	background: rgb(195, 231, 240);
+	width: 80px;
+	border-radius: 10px;
+	}
+
+a[type="button"]:active {
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	opacity: 1.0;
+	box-shadow: none;
+	transform: translateY(2px);
+}
+  

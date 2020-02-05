@@ -141,7 +141,7 @@ class TagManager extends React.Component {
       <React.Fragment>
         <Header heading="Tag List" />
         <ul>
-          <a href="../">Back to List</a>
+          <a href="../" type="button">List</a>
         </ul>
 
         <div className="inputContainer">

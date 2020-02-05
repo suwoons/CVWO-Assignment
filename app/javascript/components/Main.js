@@ -106,12 +106,6 @@ class Main extends React.Component {
           console.log("tagIndex: ", tagIndex);
 
           if (tagIndex < 0) { // does not exist
-            // this.createTag(tagName);
-            // // prevent duplicate tags
-            // if (tagArray.findIndex(id => id === this.state.tags[0].id) < 0) {
-            //   tagArray[tagArray.length] = this.state.tags[0].id;
-            // }
-            // console.log("newTag: ", this.state.tags[0]);
             alert(tagName + " tag not yet created!");
 
           } else { // tag exists
@@ -193,7 +187,7 @@ class Main extends React.Component {
       <React.Fragment>
       <Header heading="To-do List" />
       <ul>
-        <a href="/tags">Manage Tags</a>
+        <a href="/tags" type="button">Tags</a>
       </ul>
 
       <div className="inputContainer">
